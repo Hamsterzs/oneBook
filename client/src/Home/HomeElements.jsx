@@ -5,6 +5,10 @@ import { ReactComponent as BannerSvg } from "../img/banner.svg"
 const vomitColor = "#FFFAA6"
 
 export const HomeContainer = styled.div`
+    position: absolute;
+    top: 0;
+    transition: 1s;
+    left: ${props => props.active ? "0%" : "-100%"};
     width: 100vw;
     height: 100vh;
     background-image: url(${BackGround});
@@ -38,16 +42,17 @@ export const Title = styled.h1`
     color:black;
     font-size: 3rem;
     letter-spacing: 2px;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     @media (max-width:650px){
         font-size: 2rem;
     }
 `
 
 export const Tagline = styled.h2`
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     letter-spacing: 2px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+    margin-top: 10px;
     color: #0000a5;
     @media (max-width:650px){
         font-size: 1.1rem;
@@ -131,7 +136,6 @@ export const SearchButton = styled.button`
     }
 
 `
-
 export const Banner = styled(BannerSvg)`
     position: absolute;
     right: 1vw;
@@ -140,5 +144,28 @@ export const Banner = styled(BannerSvg)`
     @media (max-width:900px){
         width: 40vw;
         display:none;
+    }
+`
+
+export const UserInfo = styled.div`
+    width: 100vw;
+    height: 50px;
+    background-color: ${vomitColor};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+`
+
+export const Logout = styled.button`
+    margin-left: 20px;
+    background-color: transparent;
+    border: solid 2px #1E66C2;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover{
+        background-color: #1E66C2;
+        color:white;
     }
 `

@@ -46,7 +46,7 @@ export const Link = styled.button`
         color:black;
         cursor:pointer;
     }
-    @media(max-width: 1000px){
+    @media(max-width: 1200px){
         display:none;
     }
 `

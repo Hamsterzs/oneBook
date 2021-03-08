@@ -1,4 +1,6 @@
 import React from 'react'
+import { GlobalContext } from "../Context"
+import { useContext } from "react"
 import {
 
     HomeContainer,
@@ -8,16 +10,36 @@ import {
     SearchInput,
     ZipInput,
     SearchButton,
-    Banner
+    Banner,
+    UserInfo,
+    Logout
 
 } from "./HomeElements"
 
 import Navbar from "./NavBar"
+import { signOut } from "../Api"
 
 const Home = () => {
+    const { page, setPage, user, setUser } = useContext(GlobalContext)
+
+    const logout = async () => {
+        const response = await signOut()
+        console.log(response);
+        setUser({})
+    }
+
+    const userInfo = user.email ? (
+        <UserInfo>
+            Hello {user.name}
+            <Logout onClick={() => logout()}>Logout</Logout>
+        </UserInfo>
+    ) : ""
+
     return (
-        <HomeContainer>
-            <Navbar />
+        <HomeContainer active={page === "home"}>
+            <Navbar setPage={setPage} />
+
+            {userInfo}
 
             <SearchContainer>
                 <Title>One Book Home Services</Title>
