@@ -115,8 +115,15 @@ const logger = require("morgan")
 app.use(logger("dev"))
 
 const router = require("./router")
-const { env } = require("process")
 app.use("/api", router)
+
+const path = require("path");
+
+app.use(express.static('client/build'));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+})
 
 // listen on port
 const PORT = process.env.PORT || 5000

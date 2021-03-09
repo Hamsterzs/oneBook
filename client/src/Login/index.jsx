@@ -69,14 +69,20 @@ const Login = () => {
         <>
             <LoginInput placeholder="email" id="email" type="email" value={credentials.email} onChange={e => setCredentials({ ...credentials, email: e.target.value })} />
             <LoginInput placeholder="password" id="password" type="password" value={credentials.password} onChange={e => setCredentials({ ...credentials, password: e.target.value })} />
-            <LoginBtn onClick={() => loginAction()}>Login</LoginBtn>
+            <div style={{ display: "flex", width: "100%", justifyContent: "space-evenly" }}>
+                <LoginBtn onClick={() => loginAction()}>Login</LoginBtn>
+                <SwitchButton onClick={() => SwitchPage()} extra={true}>{page === "login" ? "Sign Up" : "Login"}</SwitchButton>
+            </div>
         </>
     ) : (
         <>
             <LoginInput placeholder="name" id="name" type="name" value={credentials.name} onChange={e => setCredentials({ ...credentials, name: e.target.value })} />
             <LoginInput placeholder="email" id="email" type="email" value={credentials.email} onChange={e => setCredentials({ ...credentials, email: e.target.value })} />
             <LoginInput placeholder="password" id="password" type="password" value={credentials.password} onChange={e => setCredentials({ ...credentials, password: e.target.value })} />
-            <LoginBtn onClick={() => signUpAction()}>Sign Up</LoginBtn>
+            <div style={{ display: "flex", width: "100%", justifyContent: "space-evenly" }}>
+                <LoginBtn onClick={() => signUpAction()}>Sign Up</LoginBtn>
+                <SwitchButton onClick={() => SwitchPage()} extra={true}>{page === "login" ? "Sign Up" : "Login"}</SwitchButton>
+            </div>
         </>
     )
 
@@ -95,9 +101,11 @@ const Login = () => {
 
             <LoginFormContainer>
                 <Form>
-                    <LoginTitle>Welcome to OneBook :)</LoginTitle>
+                    <div style={{ width: "100%" }}>
+                        <LoginTitle>Welcome to OneBook :)</LoginTitle>
+                    </div>
                     <LoginInfo>To keep connected with us please login with your personal information by email address and password</LoginInfo>
-                    <LoginTitle style={{ textAlign: "center", fontSize: "2.3rem" }}>{page === "login" ? "LOGIN" : "SIGNUP"}</LoginTitle>
+                    <LoginTitle style={{ textAlign: "center", margin: "10px", marginBottom: "0px" }}>{page === "login" ? "LOGIN" : "SIGNUP"}</LoginTitle>
                     <GoogleIcon onClick={() => (window.location = "http://localhost:5000/api/auth/google")} />
                     <SeparationContainer>
                         <SeparationLine />
