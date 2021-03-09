@@ -106,7 +106,7 @@ const Login = () => {
                     </div>
                     <LoginInfo>To keep connected with us please login with your personal information by email address and password</LoginInfo>
                     <LoginTitle style={{ textAlign: "center", margin: "10px", marginBottom: "0px" }}>{page === "login" ? "LOGIN" : "SIGNUP"}</LoginTitle>
-                    <GoogleIcon onClick={() => (window.location = "http://localhost:5000/api/auth/google")} />
+                    <GoogleIcon onClick={() => (window.location = "/api/auth/google")} />
                     <SeparationContainer>
                         <SeparationLine />
                         OR
